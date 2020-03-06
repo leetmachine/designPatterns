@@ -6,13 +6,13 @@ class Iterator {
   }
 
   first(){
-    var [first] = this.items;
-    return first;
+    this.index = 0;
+    return this.current();
   }
 
   last(){
-    var [last] = [...this.items].reverse();
-    return last;
+    this.index = this.items.length - 1;
+    return this.current();
   }
 
   hasNext(){
@@ -28,6 +28,7 @@ class Iterator {
       this.index += 1;
       return this.current();
     }
+    return {writeLn: f => f};
   }
 
   prev(){
@@ -35,6 +36,8 @@ class Iterator {
       this.index -= 1;
       return this.current();
     }
+
+    return { writeLn: f => f}
   }
 }
 
